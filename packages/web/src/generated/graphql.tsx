@@ -48,7 +48,11 @@ export type String_Comparison_Exp = {
 /** columns and relationships of "group_users" */
 export type Group_Users = {
   __typename?: 'group_users';
+  /** An object relationship */
+  group: Groups;
   group_id: Scalars['Int'];
+  /** An object relationship */
+  user: Users;
   user_id: Scalars['Int'];
 };
 
@@ -121,7 +125,9 @@ export type Group_Users_Bool_Exp = {
   _and?: Maybe<Array<Maybe<Group_Users_Bool_Exp>>>;
   _not?: Maybe<Group_Users_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Group_Users_Bool_Exp>>>;
+  group?: Maybe<Groups_Bool_Exp>;
   group_id?: Maybe<Int_Comparison_Exp>;
+  user?: Maybe<Users_Bool_Exp>;
   user_id?: Maybe<Int_Comparison_Exp>;
 };
 
@@ -139,7 +145,9 @@ export type Group_Users_Inc_Input = {
 
 /** input type for inserting data into table "group_users" */
 export type Group_Users_Insert_Input = {
+  group?: Maybe<Groups_Obj_Rel_Insert_Input>;
   group_id?: Maybe<Scalars['Int']>;
+  user?: Maybe<Users_Obj_Rel_Insert_Input>;
   user_id?: Maybe<Scalars['Int']>;
 };
 
@@ -193,7 +201,9 @@ export type Group_Users_On_Conflict = {
 
 /** ordering options when selecting data from "group_users" */
 export type Group_Users_Order_By = {
+  group?: Maybe<Groups_Order_By>;
   group_id?: Maybe<Order_By>;
+  user?: Maybe<Users_Order_By>;
   user_id?: Maybe<Order_By>;
 };
 
@@ -319,8 +329,32 @@ export type Group_Users_Variance_Order_By = {
 /** columns and relationships of "groups" */
 export type Groups = {
   __typename?: 'groups';
+  /** An array relationship */
+  group_users: Array<Group_Users>;
+  /** An aggregated array relationship */
+  group_users_aggregate: Group_Users_Aggregate;
   id: Scalars['Int'];
   name: Scalars['String'];
+};
+
+
+/** columns and relationships of "groups" */
+export type GroupsGroup_UsersArgs = {
+  distinct_on?: Maybe<Array<Group_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Group_Users_Order_By>>;
+  where?: Maybe<Group_Users_Bool_Exp>;
+};
+
+
+/** columns and relationships of "groups" */
+export type GroupsGroup_Users_AggregateArgs = {
+  distinct_on?: Maybe<Array<Group_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Group_Users_Order_By>>;
+  where?: Maybe<Group_Users_Bool_Exp>;
 };
 
 /** aggregated selection of "groups" */
@@ -390,6 +424,7 @@ export type Groups_Bool_Exp = {
   _and?: Maybe<Array<Maybe<Groups_Bool_Exp>>>;
   _not?: Maybe<Groups_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Groups_Bool_Exp>>>;
+  group_users?: Maybe<Group_Users_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
 };
@@ -407,6 +442,7 @@ export type Groups_Inc_Input = {
 
 /** input type for inserting data into table "groups" */
 export type Groups_Insert_Input = {
+  group_users?: Maybe<Group_Users_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
 };
@@ -461,6 +497,7 @@ export type Groups_On_Conflict = {
 
 /** ordering options when selecting data from "groups" */
 export type Groups_Order_By = {
+  group_users_aggregate?: Maybe<Group_Users_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
 };
@@ -961,8 +998,32 @@ export type Subscription_RootUsers_By_PkArgs = {
 /** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
+  /** An array relationship */
+  group_users: Array<Group_Users>;
+  /** An aggregated array relationship */
+  group_users_aggregate: Group_Users_Aggregate;
   id: Scalars['Int'];
   name: Scalars['String'];
+};
+
+
+/** columns and relationships of "users" */
+export type UsersGroup_UsersArgs = {
+  distinct_on?: Maybe<Array<Group_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Group_Users_Order_By>>;
+  where?: Maybe<Group_Users_Bool_Exp>;
+};
+
+
+/** columns and relationships of "users" */
+export type UsersGroup_Users_AggregateArgs = {
+  distinct_on?: Maybe<Array<Group_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Group_Users_Order_By>>;
+  where?: Maybe<Group_Users_Bool_Exp>;
 };
 
 /** aggregated selection of "users" */
@@ -1032,6 +1093,7 @@ export type Users_Bool_Exp = {
   _and?: Maybe<Array<Maybe<Users_Bool_Exp>>>;
   _not?: Maybe<Users_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Users_Bool_Exp>>>;
+  group_users?: Maybe<Group_Users_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
 };
@@ -1049,6 +1111,7 @@ export type Users_Inc_Input = {
 
 /** input type for inserting data into table "users" */
 export type Users_Insert_Input = {
+  group_users?: Maybe<Group_Users_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
   name?: Maybe<Scalars['String']>;
 };
@@ -1103,6 +1166,7 @@ export type Users_On_Conflict = {
 
 /** ordering options when selecting data from "users" */
 export type Users_Order_By = {
+  group_users_aggregate?: Maybe<Group_Users_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
 };
@@ -1211,6 +1275,43 @@ export type Users_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
+export type CreateUserMutationVariables = Exact<{
+  objects: Array<Users_Insert_Input>;
+}>;
+
+
+export type CreateUserMutation = (
+  { __typename?: 'mutation_root' }
+  & { insert_users?: Maybe<(
+    { __typename?: 'users_mutation_response' }
+    & { returning: Array<(
+      { __typename?: 'users' }
+      & Pick<Users, 'id' | 'name'>
+    )> }
+  )> }
+);
+
+export type JoiningGroupsQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type JoiningGroupsQuery = (
+  { __typename?: 'query_root' }
+  & Pick<Query_Root, 'activeUserId'>
+  & { users_by_pk?: Maybe<(
+    { __typename?: 'users' }
+    & Pick<Users, 'id' | 'name'>
+    & { group_users: Array<(
+      { __typename?: 'group_users' }
+      & { group: (
+        { __typename?: 'groups' }
+        & Pick<Groups, 'id' | 'name'>
+      ) }
+    )> }
+  )> }
+);
+
 export type UserQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
@@ -1226,6 +1327,82 @@ export type UserQuery = (
 );
 
 
+export const CreateUserDocument = gql`
+    mutation CreateUser($objects: [users_insert_input!]!) {
+  insert_users(objects: $objects) {
+    returning {
+      id
+      name
+    }
+  }
+}
+    `;
+export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
+
+/**
+ * __useCreateUserMutation__
+ *
+ * To run a mutation, you first call `useCreateUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createUserMutation, { data, loading, error }] = useCreateUserMutation({
+ *   variables: {
+ *      objects: // value for 'objects'
+ *   },
+ * });
+ */
+export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
+        return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, baseOptions);
+      }
+export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
+export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
+export const JoiningGroupsDocument = gql`
+    query JoiningGroups($id: Int!) {
+  activeUserId @client @export(as: "id")
+  users_by_pk(id: $id) {
+    id
+    name
+    group_users {
+      group {
+        id
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useJoiningGroupsQuery__
+ *
+ * To run a query within a React component, call `useJoiningGroupsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useJoiningGroupsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useJoiningGroupsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useJoiningGroupsQuery(baseOptions: Apollo.QueryHookOptions<JoiningGroupsQuery, JoiningGroupsQueryVariables>) {
+        return Apollo.useQuery<JoiningGroupsQuery, JoiningGroupsQueryVariables>(JoiningGroupsDocument, baseOptions);
+      }
+export function useJoiningGroupsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<JoiningGroupsQuery, JoiningGroupsQueryVariables>) {
+          return Apollo.useLazyQuery<JoiningGroupsQuery, JoiningGroupsQueryVariables>(JoiningGroupsDocument, baseOptions);
+        }
+export type JoiningGroupsQueryHookResult = ReturnType<typeof useJoiningGroupsQuery>;
+export type JoiningGroupsLazyQueryHookResult = ReturnType<typeof useJoiningGroupsLazyQuery>;
+export type JoiningGroupsQueryResult = Apollo.QueryResult<JoiningGroupsQuery, JoiningGroupsQueryVariables>;
 export const UserDocument = gql`
     query User($id: Int!) {
   activeUserId @client @export(as: "id")
