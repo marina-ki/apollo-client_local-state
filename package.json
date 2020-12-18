@@ -1,0 +1,21 @@
+
+{
+  "name": "apollo-client_local-state",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "web": "yarn workspace web",
+    "mobile": "yarn workspace mobile",
+    "hasura": "yarn workspace hasura",
+    "services": "yarn workspace services"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**"
+    ]
+  }
+}
