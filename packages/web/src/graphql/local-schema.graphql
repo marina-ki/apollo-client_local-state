@@ -1,0 +1,7 @@
+type query_root {
+  activeUserId: Int!
+}
+
+# type users {
+#   hoge: Int
+# }
