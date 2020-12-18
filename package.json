@@ -6,9 +6,7 @@
   "private": true,
   "scripts": {
     "web": "yarn workspace web",
-    "mobile": "yarn workspace mobile",
-    "hasura": "yarn workspace hasura",
-    "services": "yarn workspace services"
+    "hasura": "yarn workspace hasura"
   },
   "workspaces": {
     "packages": [
