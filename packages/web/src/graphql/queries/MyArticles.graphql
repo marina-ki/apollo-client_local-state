@@ -1,4 +1,4 @@
-query JoiningGroups($id: Int!) {
+query MyArticles($id: Int!) {
   activeUserId @client @export(as: "id")
   user: users_by_pk(id: $id) {
     id

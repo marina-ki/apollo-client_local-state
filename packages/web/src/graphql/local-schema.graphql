@@ -1,7 +1,12 @@
 type query_root {
   activeUserId: Int!
+  drafts: [drafts!]
 }
 
-# type users {
-#   hoge: Int
-# }
+extend type users {
+  drafts: [drafts!]
+}
+
+type drafts {
+  body: String
+}

@@ -1137,6 +1137,7 @@ export type Query_Root = {
   articles_aggregate: Articles_Aggregate;
   /** fetch data from the table: "articles" using primary key columns */
   articles_by_pk?: Maybe<Articles>;
+  drafts?: Maybe<Array<Drafts>>;
   /** fetch data from the table: "group_users" */
   group_users: Array<Group_Users>;
   /** fetch aggregated fields from the table: "group_users" */
@@ -1403,6 +1404,7 @@ export type Users = {
   articles: Array<Articles>;
   /** An aggregated array relationship */
   articles_aggregate: Articles_Aggregate;
+  drafts?: Maybe<Array<Drafts>>;
   /** An array relationship */
   group_users: Array<Group_Users>;
   /** An aggregated array relationship */
@@ -1703,6 +1705,11 @@ export type Users_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
+export type Drafts = {
+  __typename?: 'drafts';
+  body?: Maybe<Scalars['String']>;
+};
+
 export type CreatearticleMutationVariables = Exact<{
   objects: Array<Articles_Insert_Input>;
 }>;
@@ -1735,12 +1742,23 @@ export type CreateUserMutation = (
   )> }
 );
 
-export type JoiningGroupsQueryVariables = Exact<{
+export type DraftsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type DraftsQuery = (
+  { __typename?: 'query_root' }
+  & { drafts?: Maybe<Array<(
+    { __typename?: 'drafts' }
+    & Pick<Drafts, 'body'>
+  )>> }
+);
+
+export type MyArticlesQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
 
-export type JoiningGroupsQuery = (
+export type MyArticlesQuery = (
   { __typename?: 'query_root' }
   & Pick<Query_Root, 'activeUserId'>
   & { user?: Maybe<(
@@ -1839,8 +1857,40 @@ export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<C
 export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
 export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
 export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
-export const JoiningGroupsDocument = gql`
-    query JoiningGroups($id: Int!) {
+export const DraftsDocument = gql`
+    query Drafts {
+  drafts @client {
+    body
+  }
+}
+    `;
+
+/**
+ * __useDraftsQuery__
+ *
+ * To run a query within a React component, call `useDraftsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useDraftsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useDraftsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useDraftsQuery(baseOptions?: Apollo.QueryHookOptions<DraftsQuery, DraftsQueryVariables>) {
+        return Apollo.useQuery<DraftsQuery, DraftsQueryVariables>(DraftsDocument, baseOptions);
+      }
+export function useDraftsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<DraftsQuery, DraftsQueryVariables>) {
+          return Apollo.useLazyQuery<DraftsQuery, DraftsQueryVariables>(DraftsDocument, baseOptions);
+        }
+export type DraftsQueryHookResult = ReturnType<typeof useDraftsQuery>;
+export type DraftsLazyQueryHookResult = ReturnType<typeof useDraftsLazyQuery>;
+export type DraftsQueryResult = Apollo.QueryResult<DraftsQuery, DraftsQueryVariables>;
+export const MyArticlesDocument = gql`
+    query MyArticles($id: Int!) {
   activeUserId @client @export(as: "id")
   user: users_by_pk(id: $id) {
     id
@@ -1854,30 +1904,30 @@ export const JoiningGroupsDocument = gql`
     `;
 
 /**
- * __useJoiningGroupsQuery__
+ * __useMyArticlesQuery__
  *
- * To run a query within a React component, call `useJoiningGroupsQuery` and pass it any options that fit your needs.
- * When your component renders, `useJoiningGroupsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useMyArticlesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMyArticlesQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useJoiningGroupsQuery({
+ * const { data, loading, error } = useMyArticlesQuery({
  *   variables: {
  *      id: // value for 'id'
  *   },
  * });
  */
-export function useJoiningGroupsQuery(baseOptions: Apollo.QueryHookOptions<JoiningGroupsQuery, JoiningGroupsQueryVariables>) {
-        return Apollo.useQuery<JoiningGroupsQuery, JoiningGroupsQueryVariables>(JoiningGroupsDocument, baseOptions);
+export function useMyArticlesQuery(baseOptions: Apollo.QueryHookOptions<MyArticlesQuery, MyArticlesQueryVariables>) {
+        return Apollo.useQuery<MyArticlesQuery, MyArticlesQueryVariables>(MyArticlesDocument, baseOptions);
       }
-export function useJoiningGroupsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<JoiningGroupsQuery, JoiningGroupsQueryVariables>) {
-          return Apollo.useLazyQuery<JoiningGroupsQuery, JoiningGroupsQueryVariables>(JoiningGroupsDocument, baseOptions);
+export function useMyArticlesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MyArticlesQuery, MyArticlesQueryVariables>) {
+          return Apollo.useLazyQuery<MyArticlesQuery, MyArticlesQueryVariables>(MyArticlesDocument, baseOptions);
         }
-export type JoiningGroupsQueryHookResult = ReturnType<typeof useJoiningGroupsQuery>;
-export type JoiningGroupsLazyQueryHookResult = ReturnType<typeof useJoiningGroupsLazyQuery>;
-export type JoiningGroupsQueryResult = Apollo.QueryResult<JoiningGroupsQuery, JoiningGroupsQueryVariables>;
+export type MyArticlesQueryHookResult = ReturnType<typeof useMyArticlesQuery>;
+export type MyArticlesLazyQueryHookResult = ReturnType<typeof useMyArticlesLazyQuery>;
+export type MyArticlesQueryResult = Apollo.QueryResult<MyArticlesQuery, MyArticlesQueryVariables>;
 export const UserDocument = gql`
     query User($id: Int!) {
   activeUserId @client @export(as: "id")
