@@ -1,13 +1,11 @@
 query JoiningGroups($id: Int!) {
   activeUserId @client @export(as: "id")
-  users_by_pk(id: $id) {
+  user: users_by_pk(id: $id) {
     id
     name
-    group_users {
-      group {
-        id
-        name
-      }
+    articles {
+      id
+      body
     }
   }
 }

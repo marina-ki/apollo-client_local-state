@@ -1,0 +1,9 @@
+mutation Createarticle($objects: [articles_insert_input!]!) {
+  insert_articles(objects: $objects) {
+    returning {
+      id
+      body
+      user_id
+    }
+  }
+}
