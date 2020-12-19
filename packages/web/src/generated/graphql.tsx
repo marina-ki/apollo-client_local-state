@@ -1710,12 +1710,12 @@ export type Drafts = {
   body?: Maybe<Scalars['String']>;
 };
 
-export type CreatearticleMutationVariables = Exact<{
+export type CreateArticleMutationVariables = Exact<{
   objects: Array<Articles_Insert_Input>;
 }>;
 
 
-export type CreatearticleMutation = (
+export type CreateArticleMutation = (
   { __typename?: 'mutation_root' }
   & { insert_articles?: Maybe<(
     { __typename?: 'articles_mutation_response' }
@@ -1786,8 +1786,8 @@ export type UserQuery = (
 );
 
 
-export const CreatearticleDocument = gql`
-    mutation Createarticle($objects: [articles_insert_input!]!) {
+export const CreateArticleDocument = gql`
+    mutation CreateArticle($objects: [articles_insert_input!]!) {
   insert_articles(objects: $objects) {
     returning {
       id
@@ -1797,31 +1797,31 @@ export const CreatearticleDocument = gql`
   }
 }
     `;
-export type CreatearticleMutationFn = Apollo.MutationFunction<CreatearticleMutation, CreatearticleMutationVariables>;
+export type CreateArticleMutationFn = Apollo.MutationFunction<CreateArticleMutation, CreateArticleMutationVariables>;
 
 /**
- * __useCreatearticleMutation__
+ * __useCreateArticleMutation__
  *
- * To run a mutation, you first call `useCreatearticleMutation` within a React component and pass it any options that fit your needs.
- * When your component renders, `useCreatearticleMutation` returns a tuple that includes:
+ * To run a mutation, you first call `useCreateArticleMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateArticleMutation` returns a tuple that includes:
  * - A mutate function that you can call at any time to execute the mutation
  * - An object with fields that represent the current status of the mutation's execution
  *
  * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
  *
  * @example
- * const [createarticleMutation, { data, loading, error }] = useCreatearticleMutation({
+ * const [createArticleMutation, { data, loading, error }] = useCreateArticleMutation({
  *   variables: {
  *      objects: // value for 'objects'
  *   },
  * });
  */
-export function useCreatearticleMutation(baseOptions?: Apollo.MutationHookOptions<CreatearticleMutation, CreatearticleMutationVariables>) {
-        return Apollo.useMutation<CreatearticleMutation, CreatearticleMutationVariables>(CreatearticleDocument, baseOptions);
+export function useCreateArticleMutation(baseOptions?: Apollo.MutationHookOptions<CreateArticleMutation, CreateArticleMutationVariables>) {
+        return Apollo.useMutation<CreateArticleMutation, CreateArticleMutationVariables>(CreateArticleDocument, baseOptions);
       }
-export type CreatearticleMutationHookResult = ReturnType<typeof useCreatearticleMutation>;
-export type CreatearticleMutationResult = Apollo.MutationResult<CreatearticleMutation>;
-export type CreatearticleMutationOptions = Apollo.BaseMutationOptions<CreatearticleMutation, CreatearticleMutationVariables>;
+export type CreateArticleMutationHookResult = ReturnType<typeof useCreateArticleMutation>;
+export type CreateArticleMutationResult = Apollo.MutationResult<CreateArticleMutation>;
+export type CreateArticleMutationOptions = Apollo.BaseMutationOptions<CreateArticleMutation, CreateArticleMutationVariables>;
 export const CreateUserDocument = gql`
     mutation CreateUser($objects: [users_insert_input!]!) {
   insert_users(objects: $objects) {

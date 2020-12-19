@@ -1,4 +1,4 @@
-mutation Createarticle($objects: [articles_insert_input!]!) {
+mutation CreateArticle($objects: [articles_insert_input!]!) {
   insert_articles(objects: $objects) {
     returning {
       id

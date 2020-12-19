@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { useDraftsQuery, DraftsDocument } from "../generated/graphql";
 import {
   useMyArticlesQuery,
-  useCreatearticleMutation,
+  useCreateArticleMutation,
 } from "../generated/graphql";
 
 export const ArticlePage: FC = () => {
@@ -14,7 +14,7 @@ export const ArticlePage: FC = () => {
   const drafts = draftData?.drafts ?? [];
 
   const [body, setBody] = useState("");
-  const [createGroup] = useCreatearticleMutation();
+  const [createGroup] = useCreateArticleMutation();
 
   const handleCreateGroup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
