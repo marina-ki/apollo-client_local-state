@@ -3,11 +3,30 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  makeVar,
+} from "@apollo/client";
+
+export const activeUserIdVar = makeVar<number | null>(null);
 
 const client = new ApolloClient({
   uri: "http://localhost:8080/v1/graphql",
-  cache: new InMemoryCache({}),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          activeUserId: {
+            read() {
+              return activeUserIdVar();
+            },
+          },
+        },
+      },
+    },
+  }),
 });
 
 ReactDOM.render(

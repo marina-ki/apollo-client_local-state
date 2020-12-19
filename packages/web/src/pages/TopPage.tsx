@@ -5,6 +5,7 @@ import {
   useCreateUserMutation,
 } from "../generated/graphql";
 import { useHistory } from "react-router-dom";
+import { activeUserIdVar } from "../index";
 
 export const TopPage: FC = () => {
   const { data, client, refetch } = useUserQuery({
@@ -22,10 +23,7 @@ export const TopPage: FC = () => {
       variables: { objects: [{ name: name }] },
     });
     const userId = res.data?.insert_users?.returning[0].id;
-    await client.writeQuery({
-      query: UserDocument,
-      data: { activeUserId: userId },
-    });
+    activeUserIdVar(userId);
     setName("");
   };
 
