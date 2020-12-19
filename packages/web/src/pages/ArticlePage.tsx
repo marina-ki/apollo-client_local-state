@@ -19,7 +19,7 @@ export const ArticlePage: FC = () => {
   const handleCreateGroup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await createGroup({
-      variables: { objects: [{ body, user_id: data?.activeUserId }] },
+      variables: { objects: [{ body, userId: data?.activeUserId }] },
     });
     await refetch();
     setBody("");

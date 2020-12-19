@@ -3,7 +3,7 @@ mutation Createarticle($objects: [articles_insert_input!]!) {
     returning {
       id
       body
-      user_id
+      userId
     }
   }
 }

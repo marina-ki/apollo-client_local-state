@@ -372,7 +372,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -794,7 +794,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -838,7 +838,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -917,7 +917,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -965,7 +965,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1006,7 +1006,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1050,7 +1050,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1094,7 +1094,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1138,7 +1138,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1182,7 +1182,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1366,7 +1366,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1426,7 +1426,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -1461,7 +1461,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -1493,7 +1493,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1527,7 +1527,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1559,7 +1559,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1593,7 +1593,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1625,7 +1625,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1659,7 +1659,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1691,7 +1691,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1725,7 +1725,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1760,7 +1760,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -1786,7 +1786,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1820,7 +1820,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1852,7 +1852,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1886,7 +1886,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -1918,7 +1918,7 @@
             "deprecationReason": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "args": [],
             "type": {
@@ -1952,7 +1952,7 @@
             "defaultValue": null
           },
           {
-            "name": "user_id",
+            "name": "userId",
             "description": null,
             "type": {
               "kind": "ENUM",
